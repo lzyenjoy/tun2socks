@@ -46,11 +46,13 @@ echo "==== 配置路由和 DNS ===="
 sudo ip route del default > /dev/null 2>&1 &
 sudo ip route add default dev tun0
 sudo ip route add default via 198.18.0.1 dev tun0 metric 1
+# enp2s0 为默认的网卡名字，可以通过ifconfig来确定
 sudo ip route add default via 192.168.0.1 dev enp2s0 metric 10
 
 
 echo "==== 启动 tun2socks ===="
 #nohup sudo tun2socks -device tun0 -proxy socks://127.0.0.1:10808 > /dev/null 2>&1 &
+# 192.168.0.105 为提供代理服务的主机
 #sudo tun2socks -device tun0 -proxy socks5://192.168.0.105:10808 > /dev/null 2>&1 &
 
 
