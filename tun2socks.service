@@ -1,0 +1,11 @@
+[Unit]
+Description=Transparent Proxy with tun2socks
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/tun2socks -device tun0 -proxy socks5://127.0.0.1:10808
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target
